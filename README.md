@@ -1,6 +1,6 @@
 # RespawnableOres
 
-Download the appropriate release [here](https://github.com/valkyrienyanko/RespawnableOres/releases).
+Download [here](https://github.com/valkyrienyanko/RespawnableOres/releases).
 
 Fully configurable respawnable ores plugin.
 
