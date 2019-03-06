@@ -1,5 +1,7 @@
 # RespawnableOres
 
+Download the appropriate release [here](https://github.com/valkyrienyanko/RespawnableOres/releases).
+
 Fully configurable respawnable ores plugin.
 
 ### Configuration Tutorial
@@ -17,8 +19,8 @@ ores:
       z: 10000
   types: # Put the blocks here that you want effected.
   - COBWEB
-  cobweb: # This is where you can configure how long it takes to respawn the block and its respawn block type.
-    respawntime: 3 # Time is in seconds.
+  cobweb:
+    respawntime: 3 # Time in seconds.
     respawnblock: DIRT # The block that you see when your waiting for the original block to respawn.
 ```
 
