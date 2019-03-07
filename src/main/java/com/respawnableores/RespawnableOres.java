@@ -32,9 +32,9 @@ public class RespawnableOres extends JavaPlugin {
 	}
 	
 	private void registerOresConfig() {
-		Utils.setConfigValue(oresConfig, "ores.regions.r1.x", 0);
+		Utils.setConfigValue(oresConfig, "ores.regions.r1.x", -10000);
 		Utils.setConfigValue(oresConfig, "ores.regions.r1.y", 0);
-		Utils.setConfigValue(oresConfig, "ores.regions.r1.z", 0);
+		Utils.setConfigValue(oresConfig, "ores.regions.r1.z", -10000);
 		
 		Utils.setConfigValue(oresConfig, "ores.regions.r2.x", 10000);
 		Utils.setConfigValue(oresConfig, "ores.regions.r2.y", 256);

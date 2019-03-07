@@ -1,5 +1,6 @@
 package com.respawnableores.listeners;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -28,25 +29,28 @@ public class OreListener implements Listener {
 		double y2 = config.getDouble("ores.regions.r2.y");
 		double z2 = config.getDouble("ores.regions.r2.z");
 		
-		if (inRegion(loc, x1, y1, z1, x2, y2, z2)) {
-			for (String oreName : config.getStringList("ores.types")) {
-				Material oreMaterial = Material.valueOf(oreName.toUpperCase());
-				
-				new BukkitRunnable() {
-					@Override
-					public void run() {
-						b.setType(Material.valueOf(config.getString("ores." + oreName.toLowerCase() + ".respawnblock")));
+		
+		if (e.getPlayer().getGameMode() == GameMode.SURVIVAL) {
+			if (inRegion(loc, x1, y1, z1, x2, y2, z2)) {
+				for (String oreName : config.getStringList("ores.types")) {
+					Material oreMaterial = Material.valueOf(oreName.toUpperCase());
+					
+					if (type == oreMaterial) {
+						new BukkitRunnable() {
+							@Override
+							public void run() {
+								b.setType(Material.valueOf(config.getString("ores." + oreName.toLowerCase() + ".respawnblock")));
+							}
+						}.runTaskLater(RespawnableOres.plugin, 5);
+						
+						new BukkitRunnable() {
+							@Override
+							public void run() {
+								b.setType(type);
+							}
+						}.runTaskLater(RespawnableOres.plugin, 20 * config.getInt("ores." + oreName.toLowerCase() + ".respawntime"));
+						break;
 					}
-				}.runTaskLater(RespawnableOres.plugin, 5);
-				
-				if (type == oreMaterial) {
-					new BukkitRunnable() {
-						@Override
-						public void run() {
-							b.setType(type);
-						}
-					}.runTaskLater(RespawnableOres.plugin, 20 * config.getInt("ores." + oreName.toLowerCase() + ".respawntime"));
-					break;
 				}
 			}
 		}
